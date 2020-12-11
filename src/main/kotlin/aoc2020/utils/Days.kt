@@ -1,10 +1,7 @@
 package aoc2020.utils
 
 import aoc2020.days.UnknownDay
-import aoc2020.days.day1.Day1pt1
-import aoc2020.days.day1.Day1pt2
-import aoc2020.days.day1.Day2pt1
-import aoc2020.days.day1.Day2pt2
+import aoc2020.days.day1.*
 
 enum class Days {
     Unknown,
@@ -12,6 +9,8 @@ enum class Days {
     Day1pt2,
     Day2pt1,
     Day2pt2,
+    Day3pt1,
+    Day3pt2,
 }
 
 fun parseDay(input : String) : Days {
@@ -28,5 +27,7 @@ fun dayTypeToObject(type: Days) : DayExercise {
         Days.Day1pt2 -> Day1pt2()
         Days.Day2pt1 -> Day2pt1()
         Days.Day2pt2 -> Day2pt2()
+        Days.Day3pt1 -> Day3pt1()
+        Days.Day3pt2 -> Day3pt2()
     }
 }
