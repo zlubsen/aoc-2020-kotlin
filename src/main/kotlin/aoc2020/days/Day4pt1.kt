@@ -18,6 +18,7 @@ class Day4pt1 : DayExercise {
 fun countValids(criteria: List<String>, batchInput : String) : Int {
     return batchInput
         .split("\n\n") // separate records -> List<String>
+        .asSequence()
         .map { it.split("\n", " ") } // split on spaces and newlines -> List<List<String>>
         .map { pairs ->
             run {
