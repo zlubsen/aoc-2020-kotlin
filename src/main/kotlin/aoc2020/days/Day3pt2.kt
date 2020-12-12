@@ -1,4 +1,4 @@
-package aoc2020.days.day1
+package aoc2020.days
 
 import aoc2020.utils.DayExercise
 import java.io.File
@@ -14,7 +14,8 @@ class Day3pt2 : DayExercise {
             Slope(3,1),
             Slope(5,1),
             Slope(7,1),
-            Slope(1,2))
+            Slope(1,2)
+        )
 
         val result = slopes.map { countTreesOnSlope(grid, it) }.reduce { acc, it -> acc * it }
 

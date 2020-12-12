@@ -1,4 +1,4 @@
-package aoc2020.days.day1
+package aoc2020.days
 
 import aoc2020.utils.DayExercise
 import java.io.File
