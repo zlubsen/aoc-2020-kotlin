@@ -6,12 +6,12 @@ import java.io.File
 class Day8pt1 : DayExercise {
     override fun run() {
         val instructions = File("src/main/resources/aoc2020/days/day8/Day8pt1.txt")
-            .readLines()
+            .readLines().map { parseInstruction(it) }
 //        val instructions = testProgram.lines()
 
-        val proc = Processor(instructions = instructions.map { parseInstruction(it) })
+        val proc = Processor(instructions = instructions)
         val result = proc.run()
-        println(result)
+        println("${proc.state} with value $result")
     }
 }
 
@@ -25,13 +25,22 @@ class Processor(val instructions : List<Instruction>) {
     private var pc : Int = 0
 
     private var history = hashSetOf<Int>()
-//    private var hold = false
+    var state = ProgramState.Loaded
 
     fun run() : Int {
+        state = ProgramState.Running
         while (true) {
-            if (history.contains(pc))
+            if (history.contains(pc)) {
+                state = ProgramState.Halted
                 break
+            }
+            if (pc >= instructions.size) {
+                state = ProgramState.Finished
+                break
+            }
+
             history.add(pc)
+
             val inst = instructions[pc]
 //            println("op: ${inst.op} arg: ${inst.arg}")
             when(inst.op) {
@@ -48,12 +57,19 @@ class Processor(val instructions : List<Instruction>) {
     }
 }
 
-data class Instruction(val op: Operation, val arg: Int)
+data class Instruction(var op: Operation, val arg: Int)
 
 enum class Operation {
     acc,
     jmp,
     nop
+}
+
+enum class ProgramState {
+    Loaded,
+    Running,
+    Halted,
+    Finished
 }
 
 val testProgram = """
