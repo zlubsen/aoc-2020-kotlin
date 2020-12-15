@@ -22,6 +22,8 @@ enum class Days {
     Day8pt2,
     Day9pt1,
     Day9pt2,
+    Day10pt1,
+    Day10pt2,
 }
 
 fun parseDay(input : String) : Days {
@@ -52,5 +54,7 @@ fun dayTypeToObject(type: Days) : DayExercise {
         Days.Day8pt2 -> Day8pt2()
         Days.Day9pt1 -> Day9pt1()
         Days.Day9pt2 -> Day9pt2()
+        Days.Day10pt1 -> Day10pt1()
+        Days.Day10pt2 -> Day10pt2()
     }
 }
