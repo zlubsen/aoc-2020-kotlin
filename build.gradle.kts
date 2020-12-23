@@ -12,10 +12,15 @@ repositories {
 }
 dependencies {
     testImplementation(kotlin("test-junit5"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     implementation("com.xenomachina:kotlin-argparser:2.0.7")
 }
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "13"
+}
+tasks.named<Test>("test") {
+    useJUnitPlatform()
 }
 application {
     mainClassName = "MainKt"
