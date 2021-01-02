@@ -45,8 +45,8 @@ open class Day16pt1 : DayExercise {
 
     fun parseNearbyTickets(block : String) : List<List<Int>> {
         return block.split("\n")
-            .filter { it[0].isDigit() }
-            .map { it.split(",")
+            .drop(1)
+            .map { line -> line.split(",")
                 .map { inner -> inner.toInt() } }
     }
 }
